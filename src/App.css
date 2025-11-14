@@ -11,11 +11,19 @@
   will-change: filter;
   transition: filter 300ms;
 }
-.logo:hover {
+/* .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+} */
+
+/* src/App.css - 수정 예시 */
+.logo:hover {
+  filter: drop-shadow(0 0 2em #000000aa); /* 검은색 그림자 */
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #000000aa); /* 검은색 그림자 */
 }
 
 @keyframes logo-spin {
