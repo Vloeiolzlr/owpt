@@ -104,15 +104,16 @@ const PricingTable: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <motion.button
-            className="px-10 py-4 bg-black hover:bg-gray-800 text-white font-bold 
-                       rounded-xl transition-all duration-300 transform 
-                       hover:scale-105 shadow-lg"
+          <motion.a
+            href="https://discord.gg/zayDrBvezf" // 2. 여기에 실제 디스코드 초대 링크를 넣어주세요
+            target="_blank" // 3. 새 탭에서 열리도록 설정
+            rel="noopener noreferrer" // 4. 보안 설정
+            className="px-8 py-4 border-2 border-black/50 hover:border-black text-black hover:bg-black hover:text-white font-bold rounded-xl transition-all duration-300 transform hover:scale-105"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-          >
+            >
             디스코드
-          </motion.button>
+            </motion.a>
         </motion.div>
         {/* ▲▲▲ 버튼 추가 완료 ▲▲▲ */}
 

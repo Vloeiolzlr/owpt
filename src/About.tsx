@@ -100,13 +100,16 @@ const About: React.FC = () => {
                     {showPricing ? '가격표 닫기' : '가격표'} {/* <-- 텍스트 변경 로직 추가 */}
                   </motion.button>
 
-                  <motion.button
+                  <motion.a
+                      href="https://discord.gg/zayDrBvezf" // 2. 여기에 실제 디스코드 초대 링크를 넣어주세요
+                      target="_blank" // 3. 새 탭에서 열리도록 설정
+                      rel="noopener noreferrer" // 4. 보안 설정
                       className="px-8 py-4 border-2 border-black/50 hover:border-black text-black hover:bg-black hover:text-white font-bold rounded-xl transition-all duration-300 transform hover:scale-105"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.97 }}
                     >
                       디스코드
-                    </motion.button>
+                    </motion.a>
                 </motion.div>
               </motion.div>
             </div>
@@ -310,7 +313,7 @@ const About: React.FC = () => {
           >
             <div className="max-w-6xl mx-auto">
               <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-gray-300 via-gray-400 to-yellow-500 rounded-3xl blur opacity-20" />
+                <div className="absolute -inset-1 bg-gray-300 rounded-3xl blur opacity-20" />
                 <motion.div
                   className="relative bg-white p-12 md:p-16 rounded-3xl border border-gray-200 shadow-lg text-center"
                   variants={staggerUp}
@@ -356,13 +359,17 @@ const About: React.FC = () => {
                     variants={fadeInUp}
                   >
                     {/* (디스코드 버튼 반영) */}
-                    <motion.button
+                  
+                    <motion.a
+                      href="https://discord.gg/zayDrBvezf" // 2. 여기에 실제 디스코드 초대 링크를 넣어주세요
+                      target="_blank" // 3. 새 탭에서 열리도록 설정
+                      rel="noopener noreferrer" // 4. 보안 설정
                       className="px-8 py-4 border-2 border-black/50 hover:border-black text-black hover:bg-black hover:text-white font-bold rounded-xl transition-all duration-300 transform hover:scale-105"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.97 }}
                     >
                       디스코드
-                    </motion.button>
+                    </motion.a>
                   </motion.div>
                 </motion.div>
               </div>
