@@ -22,7 +22,7 @@ const SimplePriceCard: React.FC<SimplePriceCardProps> = ({ tier, price, isCta = 
         <h3 className="text-2xl font-bold text-black mb-4">{tier}</h3>
         <p className="text-gray-600">
           {/* 없음<br/> */}
-          자세한 사항은 디스코드를 이용해주세요.
+          승당제, 듀오 등<br/>자세한 사항은 디스코드를 이용해주세요.
         </p>
         {/* --- '문의하기' 버튼이 여기서 삭제되었습니다 --- */}
       </motion.div>
@@ -58,11 +58,11 @@ const PricingTable: React.FC = () => {
     { tier: '플래티넘', price: '10,000' },
     { tier: '다이아몬드', price: '15,000' },
     { tier: '마스터', price: '25,000' },
-    { tier: '그랜드마스터 5', price: '60,000' },
-    { tier: '그랜드마스터 4', price: '75,000' },
-    { tier: '그랜드마스터 3', price: '90,000' },
-    { tier: '그랜드마스터 2', price: '130,000' },
-    { tier: '그랜드마스터 1', price: '170,000' },
+    { tier: '그랜드마스터 5', price: '40,000' },
+    { tier: '그랜드마스터 4', price: '60,000' },
+    { tier: '그랜드마스터 3', price: '70,000' },
+    { tier: '그랜드마스터 2', price: '100,000' },
+    { tier: '그랜드마스터 1', price: '140,000' },
   ];
 
   return (
