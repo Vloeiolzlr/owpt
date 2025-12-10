@@ -1,7 +1,6 @@
-// vloeiolzlr/owpt/owpt-fecdb1401af017faa9974adaf80620d1f8666821/src/About.tsx (최종 수정본)
+// src/About.tsx
 
-// 1. AnimatePresence를 import에 추가합니다.
-import React, { useState } from 'react'; // (useEffect는 사용되지 않아 제거)
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'; 
 import {
   fadeInSoft,
@@ -11,17 +10,25 @@ import {
   staggerUp,
   easeEmphasized,
 } from './utils/motionPresets';
+
+// 컴포넌트 임포트
 import PricingTable from './PricingTable';
+import PlacementTable from './PlacementTable';
+import DuoTable from './DuoTable';
+import DriverGuide from './DriverGuide';
 
 const About: React.FC = () => {
-  const [showPricing, setShowPricing] = useState(false);
-  
-  // ... (주석 처리된 useEffect 등은 그대로 둡니다) ...
+  // 변경: 여러 개의 boolean state 대신, 현재 활성화된 섹션의 이름을 저장하는 하나의 state 사용
+  // 값: 'pricing' | 'placement' | 'duo' | 'driver' | null
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+
+  // 섹션 토글 함수: 이미 열려있는 섹션을 누르면 닫고(null), 다른 걸 누르면 해당 섹션으로 변경
+  const toggleSection = (section: string) => {
+    setActiveSection((prev) => (prev === section ? null : section));
+  };
 
   return (
     <div className="relative min-h-screen text-black bg-white">
-      {/* ... (주석 처리된 배경 이미지 등은 그대로 둡니다) ... */}
-
       <motion.div
         className="relative z-10"
         initial={{ opacity: 0 }}
@@ -38,99 +45,170 @@ const About: React.FC = () => {
           viewport={{ once: true, amount: 0.12 }}
         >
 
-          {/* --- 1. 첫 번째 섹션 (사용자님 최신 문구 반영) --- */}
+          {/* --- 1. 첫 번째 섹션 --- */}
           <div>
-          <motion.section
-            className="relative overflow-hidden mb-20 md:mb-32"
-            variants={fadeInFromBlur}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
-          >
-            {/* 가격표 - 고객과의 신뢰 여백크기 md:py-값*/}
-            <div className="max-w-6xl mx-auto px-6 py-2 md:py-1">
-              <motion.div
-                className="text-center"
-                variants={staggerUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-              >
-                <motion.h1
-                  className="text-5xl md:text-7xl font-black tracking-tight mb-8 leading-tight"
-                  variants={fadeInUp}
-                >
-                  <span className="block mb-2 text-black">항상 고객의 입장에서</span>
-                  <motion.span
-                    className="inline-block text-black"
-                    initial={{ opacity: 0, y: 32 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: easeEmphasized }}
-                  >
-                    생각합니다
-                  </motion.span>
-                </motion.h1>
-
-                <motion.p
-                  className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed mb-12"
-                  variants={fadeInUp}
-                >
-                  프라임팀은 단순히 돈만 받고 일하는 팀이 아닙니다.<br />
-                  {/* 사용자님 최신 문구: */}
-                  <span className="text-black font-semibold">고객의 마음처럼</span> 하나 하나 신중하게 작업합니다.
-                </motion.p>
-
+            <motion.section
+              className="relative overflow-hidden mb-20 md:mb-32"
+              variants={fadeInFromBlur}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.15 }}
+            >
+              <div className="max-w-6xl mx-auto px-6 py-2 md:py-1">
                 <motion.div
-                  className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-                  variants={fadeInUp}
+                  className="text-center"
+                  variants={staggerUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
                 >
-                  {/* "프로그램 보기" 버튼은 사용자님이 주석 처리하신 것 반영 */}
-                  {/* <motion.button ... >
-                    프로그램 보기
-                  </motion.button> */}
-
-                  {/* 2. '가격표' 버튼에 onClick 이벤트와 텍스트 변경 로직 추가 */}
-                  <motion.button
-                    className="px-8 py-4 border-2 border-black/50 hover:border-black text-black hover:bg-black hover:text-white font-bold rounded-xl transition-all duration-300 transform hover:scale-105"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.97 }}
-                    onClick={() => setShowPricing(!showPricing)} // <-- 클릭 이벤트 추가
+                  <motion.h1
+                    className="text-5xl md:text-7xl font-black tracking-tight mb-8 leading-tight"
+                    variants={fadeInUp}
                   >
-                    {showPricing ? '가격표 닫기' : '가격표'} {/* <-- 텍스트 변경 로직 추가 */}
-                  </motion.button>
+                    <span className="block mb-2 text-black">항상 고객의 입장에서</span>
+                    <motion.span
+                      className="inline-block text-black"
+                      initial={{ opacity: 0, y: 32 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, ease: easeEmphasized }}
+                    >
+                      생각합니다
+                    </motion.span>
+                  </motion.h1>
 
-                  <motion.a
-                      href="https://discord.gg/zayDrBvezf" // 2. 여기에 실제 디스코드 초대 링크를 넣어주세요
-                      target="_blank" // 3. 새 탭에서 열리도록 설정
-                      rel="noopener noreferrer" // 4. 보안 설정
-                      className="px-8 py-4 border-2 border-black/50 hover:border-black text-black hover:bg-black hover:text-white font-bold rounded-xl transition-all duration-300 transform hover:scale-105"
+                  <motion.p
+                    className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed mb-12"
+                    variants={fadeInUp}
+                  >
+                    프라임팀은 단순히 돈만 받고 일하는 팀이 아닙니다.<br />
+                    <span className="text-black font-semibold">고객의 마음처럼</span> 하나 하나 신중하게 작업합니다.
+                  </motion.p>
+
+                  <motion.div
+                    className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center items-center"
+                    variants={fadeInUp}
+                  >
+                    {/* 1. 가격표 버튼 */}
+                    <motion.button
+                      className={`px-8 py-4 border-2 font-bold rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                        activeSection === 'pricing' 
+                          ? 'bg-black text-white border-black' 
+                          : 'border-black/50 text-black hover:border-black hover:bg-black hover:text-white'
+                      }`}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.97 }}
+                      onClick={() => toggleSection('pricing')}
                     >
-                      디스코드
-                    </motion.a>
-                </motion.div>
-              </motion.div>
-            </div>
-          </motion.section>
-           {/* 3. ▼▼▼ 가격표 조건부 렌더링 섹션 추가 ▼▼▼ */}
-        <AnimatePresence>
-          {showPricing && (
-            <motion.div
-              initial={{ opacity: 0, y: 50 }} // 나타날 때 아래에서 위로
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 50 }} // 사라질 때 아래로
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-            >
-              <PricingTable />
-            </motion.div>
-          )}
-        </AnimatePresence>
-        {/* 3. ▲▲▲ 가격표 섹션 추가 완료 ▲▲▲ */}
-        </div>
+                      {activeSection === 'pricing' ? '티어제 닫기' : '티어제'}
+                    </motion.button>
 
-          {/* --- 2. 두 번째 섹션 (사용자님 최신 문구 반영) --- */}
+                    {/* 2. 배치고사 버튼 */}
+                    <motion.button
+                      className={`px-8 py-4 border-2 font-bold rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                        activeSection === 'placement' 
+                          ? 'bg-black text-white border-black' 
+                          : 'border-black/50 text-black hover:border-black hover:bg-black hover:text-white'
+                      }`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.97 }}
+                      onClick={() => toggleSection('placement')}
+                    >
+                      {activeSection === 'placement' ? '배치고사 닫기' : '배치고사'}
+                    </motion.button>
+
+                    {/* 3. 듀오 버튼 */}
+                    <motion.button
+                      className={`px-8 py-4 border-2 font-bold rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                        activeSection === 'duo' 
+                          ? 'bg-black text-white border-black' 
+                          : 'border-black/50 text-black hover:border-black hover:bg-black hover:text-white'
+                      }`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.97 }}
+                      onClick={() => toggleSection('duo')}
+                    >
+                      {activeSection === 'duo' ? '듀오표 닫기' : '듀오'}
+                    </motion.button>
+
+                    {/* 4. 기사 안내 버튼 */}
+                    <motion.button
+                      className={`px-8 py-4 border-2 font-bold rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                        activeSection === 'driver' 
+                          ? 'bg-black text-white border-black' 
+                          : 'border-black/50 text-black hover:border-black hover:bg-black hover:text-white'
+                      }`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.97 }}
+                      onClick={() => toggleSection('driver')}
+                    >
+                      {activeSection === 'driver' ? '안내 닫기' : '기사 안내'}
+                    </motion.button>
+
+                    
+                  </motion.div>
+                </motion.div>
+              </div>
+            </motion.section>
+
+            {/* 조건부 렌더링 섹션 (AnimatePresence mode="wait" 추가: 하나가 완전히 사라진 후 다음 것 등장) */}
+            <AnimatePresence mode="wait">
+              {/* 가격표 */}
+              {activeSection === 'pricing' && (
+                <motion.div
+                  key="pricing"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                >
+                  <PricingTable />
+                </motion.div>
+              )}
+
+              {/* 배치고사 */}
+              {activeSection === 'placement' && (
+                <motion.div
+                  key="placement"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                >
+                  <PlacementTable />
+                </motion.div>
+              )}
+
+              {/* 듀오 */}
+              {activeSection === 'duo' && (
+                <motion.div
+                  key="duo"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                >
+                  <DuoTable />
+                </motion.div>
+              )}
+
+              {/* 기사 안내 */}
+              {activeSection === 'driver' && (
+                <motion.div
+                  key="driver"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                >
+                  <DriverGuide />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* --- 2. 두 번째 섹션 --- */}
           <motion.section
             className="mb-20 md:mb-32"
             variants={fadeInSoft}
@@ -146,7 +224,6 @@ const About: React.FC = () => {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
               >
-                {/* (타이틀 문구 사용자님 것으로 반영) */}
                 <motion.h2 className="text-4xl md:text-5xl font-black text-black mb-6" variants={fadeInUp}>
                   <span className="text-black">고객과의 신뢰</span>, 그리고 팀의 비전
                 </motion.h2>
@@ -160,7 +237,7 @@ const About: React.FC = () => {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
                 >
-                  {/* (카드 1: '책임감' 문구 반영) */}
+                  {/* 카드 1: 책임감 */}
                   <motion.div
                     className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
                     variants={fadeInUp}
@@ -186,7 +263,7 @@ const About: React.FC = () => {
                     </div>
                   </motion.div>
 
-                  {/* (카드 2: '고객 맞춤' 문구 반영) */}
+                  {/* 카드 2: 고객 맞춤 */}
                   <motion.div
                     className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
                     variants={fadeInUp}
@@ -212,7 +289,7 @@ const About: React.FC = () => {
                     </div>
                   </motion.div>
 
-                  {/* (카드 3: '최저가' 문구 반영) */}
+                  {/* 카드 3: 최저가 */}
                   <motion.div
                     className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm"
                     variants={fadeInUp}
@@ -234,7 +311,7 @@ const About: React.FC = () => {
                   </motion.div>
                 </motion.div>
 
-                {/* --- 2-b. 오른쪽 카드 (99% 만족도, 이벤트) --- */}
+                {/* 오른쪽 카드 (99% 만족도, 이벤트) */}
                 <motion.div
                   className="relative"
                   variants={fadeInScale}
@@ -254,7 +331,6 @@ const About: React.FC = () => {
                     variants={fadeInUp}
                   >
                     <div className="text-center">
-                      {/* (99% 만족도 문구 반영) */}
                       <div className="mb-8">
                         <div className="relative w-32 h-32 mx-auto mb-6">
                           <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
@@ -268,7 +344,7 @@ const About: React.FC = () => {
                               fill="none"
                               strokeDasharray="251.2"
                               strokeDashoffset="10"
-                              className="text-black transition-all duration-1000 ease-out" // 2. 노란색 -> 검은색
+                              className="text-black transition-all duration-1000 ease-out"
                               strokeLinecap="round"
                             />
                           </svg>
@@ -283,10 +359,8 @@ const About: React.FC = () => {
                         </p>
                       </div>
 
-                      {/* '다양한 이벤트' 아이콘 수정 */}
                       <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 transform hover:scale-110 transition-transform duration-300">
                         <svg className="w-10 h-10 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          {/* 아이콘을 '별' 모양(이벤트)으로 변경 */}
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z" />
                         </svg>
                       </div>
@@ -303,7 +377,7 @@ const About: React.FC = () => {
             </div>
           </motion.section>
 
-          {/* --- 3. 마지막 섹션 (사용자님 최신 문구 반영) --- */}
+          {/* --- 3. 마지막 섹션 --- */}
           <motion.section
             className="mb-20 md:mb-32"
             variants={fadeInSoft}
@@ -321,7 +395,6 @@ const About: React.FC = () => {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.35 }}
                 >
-                  {/* 아이콘 색상을 '핵심 가치'와 동일한 회색 계열로 변경 */}
                   <motion.div
                     className="inline-flex items-center justify-center w-24 h-24 rounded-3xl mb-8"
                     variants={fadeInScale}
@@ -358,12 +431,10 @@ const About: React.FC = () => {
                     className="flex flex-col sm:flex-row gap-6 justify-center items-center"
                     variants={fadeInUp}
                   >
-                    {/* (디스코드 버튼 반영) */}
-                  
                     <motion.a
-                      href="https://discord.gg/zayDrBvezf" // 2. 여기에 실제 디스코드 초대 링크를 넣어주세요
-                      target="_blank" // 3. 새 탭에서 열리도록 설정
-                      rel="noopener noreferrer" // 4. 보안 설정
+                      href="https://discord.gg/zayDrBvezf"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="px-8 py-4 border-2 border-black/50 hover:border-black text-black hover:bg-black hover:text-white font-bold rounded-xl transition-all duration-300 transform hover:scale-105"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.97 }}
@@ -376,9 +447,6 @@ const About: React.FC = () => {
             </div>
           </motion.section>
         </motion.main>
-
-       
-
       </motion.div>
     </div>
   );

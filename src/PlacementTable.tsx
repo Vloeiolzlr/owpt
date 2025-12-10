@@ -52,17 +52,17 @@ const SimplePriceCard: React.FC<SimplePriceCardProps> = ({ tier, price, isCta = 
 const PricingTable: React.FC = () => {
   // 8개 티어 데이터 (변경 없음)
   const tiers = [
-    { tier: '브론즈', price: '1,000' },
-    { tier: '실버', price: '2,000' },
-    { tier: '골드', price: '2,500' },
+    { tier: '브론즈', price: '3,000' },
+    { tier: '실버', price: '3,000' },
+    { tier: '골드', price: '3,000' },
     { tier: '플래티넘', price: '3,000' },
-    { tier: '다이아몬드', price: '4,000' },
-    { tier: '마스터', price: '5,000' },
-    { tier: '그랜드마스터 5', price: '10,000' },
-    { tier: '그랜드마스터 4', price: '13,500' },
-    { tier: '그랜드마스터 3', price: '15,000' },
-    { tier: '그랜드마스터 2', price: '22,000' },
-    { tier: '그랜드마스터 1', price: '27,000' },
+    { tier: '다이아몬드', price: '3,500' },
+    { tier: '마스터', price: '4,500' },
+    { tier: '그랜드마스터 5', price: '6,000' },
+    { tier: '그랜드마스터 4', price: '70,000' },
+    { tier: '그랜드마스터 3', price: '80,000' },
+    { tier: '그랜드마스터 2', price: '10,000' },
+    { tier: '그랜드마스터 1', price: '12,000' },
   ];
 
   return (
@@ -79,10 +79,10 @@ const PricingTable: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-black text-black mb-4">
-            티어별 가격표
+            배치고사 가격표
           </motion.h2>
           <motion.p variants={fadeInUp} className="text-xl text-gray-600 max-w-2xl mx-auto">
-            1승 기준
+            1판 기준
           </motion.p>
         </motion.div>
 
