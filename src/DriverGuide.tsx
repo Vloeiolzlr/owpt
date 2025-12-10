@@ -24,7 +24,7 @@ const DriverCard: React.FC<DriverCardProps> = ({ name, tier, position, isCta = f
       >
         <h3 className="text-2xl font-bold text-black mb-4">{name}</h3>
         <p className="text-gray-600 leading-relaxed">
-          검증된 기사들로만 구성되어 있습니다.<br/>
+          검증된 강사들로만 구성되어 있습니다.<br/>
         </p>
       </motion.div>
     );
@@ -88,10 +88,10 @@ const DriverGuide: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-black text-black mb-4">
-            기사 안내
+            강사 안내
           </motion.h2>
           <motion.p variants={fadeInUp} className="text-xl text-gray-600 max-w-2xl mx-auto">
-            최고의 실력을 가진 TEAM PRIME의 기사들을 소개합니다.
+            최고의 실력을 가진 TEAM PRIME의 강사들을 소개합니다.
           </motion.p>
         </motion.div>
 
