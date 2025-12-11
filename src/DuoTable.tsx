@@ -58,7 +58,7 @@ const PricingTable: React.FC = () => {
     { tier: '플래티넘', price: '3,300' },
     { tier: '다이아몬드', price: '5,500' },
     { tier: '마스터', price: '6,300' },
-    { tier: '그랜드마스터 5', price: '10,000' },
+    { tier: '그랜드마스터 5', price: '11,000' },
     { tier: '그랜드마스터 4', price: '12,000' },
     { tier: '그랜드마스터 3', price: '14,000' },
     { tier: '그랜드마스터 2', price: '19,000' },
