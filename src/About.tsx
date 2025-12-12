@@ -15,14 +15,14 @@ import {
 import PricingTable from './PricingTable';
 import PlacementTable from './PlacementTable';
 import DuoTable from './DuoTable';
-import DriverGuide from './DriverGuide';
+import PlayTable from './PlayTable';   // 승패무관 (판수제)
+import DriverGuide from './DriverGuide'; // 기사 안내
 
 const About: React.FC = () => {
-  // 변경: 여러 개의 boolean state 대신, 현재 활성화된 섹션의 이름을 저장하는 하나의 state 사용
-  // 값: 'pricing' | 'placement' | 'duo' | 'driver' | null
+  // 현재 활성화된 섹션 상태 관리 ('pricing' | 'placement' | 'duo' | 'play' | 'driver' | null)
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
-  // 섹션 토글 함수: 이미 열려있는 섹션을 누르면 닫고(null), 다른 걸 누르면 해당 섹션으로 변경
+  // 섹션 토글 함수
   const toggleSection = (section: string) => {
     setActiveSection((prev) => (prev === section ? null : section));
   };
@@ -86,6 +86,7 @@ const About: React.FC = () => {
                     <span className="text-black font-semibold">고객의 마음처럼</span> 하나 하나 신중하게 작업합니다.
                   </motion.p>
 
+                  {/* 버튼 그룹 */}
                   <motion.div
                     className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center items-center"
                     variants={fadeInUp}
@@ -132,7 +133,21 @@ const About: React.FC = () => {
                       {activeSection === 'duo' ? '듀오표 닫기' : '듀오'}
                     </motion.button>
 
-                    {/* 4. 기사 안내 버튼 */}
+                    {/* 4. 승패무관 버튼 */}
+                    <motion.button
+                      className={`px-8 py-4 border-2 font-bold rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                        activeSection === 'play' 
+                          ? 'bg-black text-white border-black' 
+                          : 'border-black/50 text-black hover:border-black hover:bg-black hover:text-white'
+                      }`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.97 }}
+                      onClick={() => toggleSection('play')}
+                    >
+                      {activeSection === 'play' ? '승패무관 닫기' : '승패무관'}
+                    </motion.button>
+
+                    {/* 5. 기사 안내 버튼 */}
                     <motion.button
                       className={`px-8 py-4 border-2 font-bold rounded-xl transition-all duration-300 transform hover:scale-105 ${
                         activeSection === 'driver' 
@@ -143,16 +158,14 @@ const About: React.FC = () => {
                       whileTap={{ scale: 0.97 }}
                       onClick={() => toggleSection('driver')}
                     >
-                      {activeSection === 'driver' ? '안내 닫기' : '강사 안내'}
+                      {activeSection === 'driver' ? '안내 닫기' : '기사 안내'}
                     </motion.button>
-
-                    
                   </motion.div>
                 </motion.div>
               </div>
             </motion.section>
 
-            {/* 조건부 렌더링 섹션 (AnimatePresence mode="wait" 추가: 하나가 완전히 사라진 후 다음 것 등장) */}
+            {/* 조건부 렌더링 섹션 (AnimatePresence mode="wait": 하나가 닫히고 다음 것이 열림) */}
             <AnimatePresence mode="wait">
               {/* 가격표 */}
               {activeSection === 'pricing' && (
@@ -193,6 +206,19 @@ const About: React.FC = () => {
                 </motion.div>
               )}
 
+              {/* 승패무관 */}
+              {activeSection === 'play' && (
+                <motion.div
+                  key="play"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                >
+                  <PlayTable />
+                </motion.div>
+              )}
+
               {/* 기사 안내 */}
               {activeSection === 'driver' && (
                 <motion.div
@@ -208,7 +234,7 @@ const About: React.FC = () => {
             </AnimatePresence>
           </div>
 
-          {/* --- 2. 두 번째 섹션 --- */}
+          {/* --- 2. 두 번째 섹션 (핵심 가치, 고객 만족도 등) --- */}
           <motion.section
             className="mb-20 md:mb-32"
             variants={fadeInSoft}
@@ -377,7 +403,7 @@ const About: React.FC = () => {
             </div>
           </motion.section>
 
-          {/* --- 3. 마지막 섹션 --- */}
+          {/* --- 3. 마지막 섹션 (클린 작업 강조) --- */}
           <motion.section
             className="mb-20 md:mb-32"
             variants={fadeInSoft}

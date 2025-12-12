@@ -22,7 +22,7 @@ const SimplePriceCard: React.FC<SimplePriceCardProps> = ({ tier, price, isCta = 
         <h3 className="text-2xl font-bold text-black mb-4">{tier}</h3>
         <p className="text-gray-600">
           {/* 없음<br/> */}
-          듀오 작업 특성 상 실력 파악이 분명하지 않아<br/>승패무관 상품으로 진행됩니다.
+          작업 방송은 무료입니다!<br/>문의는 디스코드를 이용해주세요.
         </p>
         {/* --- '문의하기' 버튼이 여기서 삭제되었습니다 --- */}
       </motion.div>
@@ -52,17 +52,17 @@ const SimplePriceCard: React.FC<SimplePriceCardProps> = ({ tier, price, isCta = 
 const PricingTable: React.FC = () => {
   // 8개 티어 데이터 (변경 없음)
   const tiers = [
-    { tier: '브론즈', price: '2,000' },
-    { tier: '실버', price: '2,000' },
-    { tier: '골드', price: '2,000' },
-    { tier: '플래티넘', price: '2,800' },
-    { tier: '다이아몬드', price: '3,500' },
-    { tier: '마스터', price: '4,500' },
-    { tier: '그랜드마스터 5', price: '8,000' },
-    { tier: '그랜드마스터 4', price: '11,000' },
-    { tier: '그랜드마스터 3', price: '15,000' },
-    { tier: '그랜드마스터 2', price: '20,000' },
-    { tier: '그랜드마스터 1', price: '26,000' },
+    { tier: '브론즈', price: '1,000' },
+    { tier: '실버', price: '1,500' },
+    { tier: '골드', price: '1,700' },
+    { tier: '플래티넘', price: '2,500' },
+    { tier: '다이아몬드', price: '3,000' },
+    { tier: '마스터', price: '4,000' },
+    { tier: '그랜드마스터 5', price: '6,000' },
+    { tier: '그랜드마스터 4', price: '7,000' },
+    { tier: '그랜드마스터 3', price: '9,000' },
+    { tier: '그랜드마스터 2', price: '11,000' },
+    { tier: '그랜드마스터 1', price: '14,000' },
   ];
 
   return (
@@ -79,10 +79,10 @@ const PricingTable: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-black text-black mb-4">
-            기사듀오 가격표
+            승패무관 가격표
           </motion.h2>
           <motion.p variants={fadeInUp} className="text-xl text-gray-600 max-w-2xl mx-auto">
-            1판 기준입니다.
+            1판 기준 가격입니다.
           </motion.p>
         </motion.div>
 

@@ -82,7 +82,7 @@ const PricingTable: React.FC = () => {
             배치고사 가격표
           </motion.h2>
           <motion.p variants={fadeInUp} className="text-xl text-gray-600 max-w-2xl mx-auto">
-            1판 기준
+            1판 기준입니다.
           </motion.p>
         </motion.div>
 
