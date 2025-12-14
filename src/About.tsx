@@ -158,7 +158,7 @@ const About: React.FC = () => {
                       whileTap={{ scale: 0.97 }}
                       onClick={() => toggleSection('driver')}
                     >
-                      {activeSection === 'driver' ? '안내 닫기' : '기사 안내'}
+                      {activeSection === 'driver' ? '안내 닫기' : '강사 안내'}
                     </motion.button>
                   </motion.div>
                 </motion.div>
