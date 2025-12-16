@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'; 
 import {
   fadeInSoft,
@@ -24,6 +24,11 @@ interface AboutProps {
 const About: React.FC<AboutProps> = ({ lang }) => {
   const t = translations[lang]; 
   const [activeSection, setActiveSection] = useState<string | null>(null);
+
+  // ▼ 추가됨: 언어(lang)가 변경될 때마다 열려있는 섹션을 모두 닫습니다.
+  useEffect(() => {
+    setActiveSection(null);
+  }, [lang]);
 
   const toggleSection = (section: string) => {
     setActiveSection((prev) => (prev === section ? null : section));
