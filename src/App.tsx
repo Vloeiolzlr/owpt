@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './index.css';
 import About from './About';
-import { translations,type Language } from './constants/translations';
+import { type Language } from './constants/translations';
 
 function App() {
   const [lang, setLang] = useState<Language | null>(null);
