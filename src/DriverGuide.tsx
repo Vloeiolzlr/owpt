@@ -111,7 +111,7 @@ const DriverGuide: React.FC<DriverGuideProps> = ({ lang }) => {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.a
-            href="https://discord.gg/zayDrBvezf"
+            href={t.discordLink}
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-4 border-2 border-black/50 hover:border-black text-black hover:bg-black hover:text-white font-bold rounded-xl transition-all duration-300 transform hover:scale-105"
