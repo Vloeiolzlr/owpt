@@ -5,10 +5,14 @@ export const translations = {
     // 공통
     discord: "디스코드",
     inquiry: "문의하기",
+    discordLink: "https://discord.gg/zayDrBvezf",
     currency: "₩",
-    won: "원",
+    won: "",
     perWin: "1승 기준입니다.",
     perGame: "1판 기준입니다.",
+    perNetWin: "1판 기준입니다.",
+    perDivision: "1승 기준입니다.",
+
     
     // Intro
     selectLanguage: "언어를 선택하세요 / Select Language",
