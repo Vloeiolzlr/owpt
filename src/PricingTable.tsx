@@ -49,17 +49,17 @@ const PricingTable: React.FC<PricingTableProps> = ({ lang }) => {
   const isEn = lang === 'en';
 
   const tiers = [
-    { tier: isEn ? 'Bronze' : '브론즈', price: isEn ? '2' : '2,500' },
-    { tier: isEn ? 'Silver' : '실버', price: isEn ? '2' : '2,500' },
-    { tier: isEn ? 'Gold' : '골드', price: isEn ? '3' : '2,500' },
-    { tier: isEn ? 'Platinum' : '플래티넘', price: isEn ? '6' : '3,000' },
-    { tier: isEn ? 'Diamond' : '다이아몬드', price: isEn ? '7' : '4,000' },
-    { tier: isEn ? 'Master' : '마스터', price: isEn ? '12' : '5,000' },
-    { tier: isEn ? 'Grandmaster 5' : '그랜드마스터 5', price: isEn ? '14' : '10,000' },
-    { tier: isEn ? 'Grandmaster 4' : '그랜드마스터 4', price: isEn ? '18' : '13,000' },
-    { tier: isEn ? 'Grandmaster 3' : '그랜드마스터 3', price: isEn ? '21' : '15,000' },
-    { tier: isEn ? 'Grandmaster 2' : '그랜드마스터 2', price: isEn ? '26' : '22,000' },
-    { tier: isEn ? 'Grandmaster 1' : '그랜드마스터 1', price: isEn ? '31' : '27,000' },
+    { tier: isEn ? 'Bronze' : '브론즈', price: isEn ? '5' : '2,500' },
+    { tier: isEn ? 'Silver' : '실버', price: isEn ? '7' : '2,500' },
+    { tier: isEn ? 'Gold' : '골드', price: isEn ? '9' : '2,500' },
+    { tier: isEn ? 'Platinum' : '플래티넘', price: isEn ? '10' : '3,000' },
+    { tier: isEn ? 'Diamond' : '다이아몬드', price: isEn ? '15' : '4,000' },
+    { tier: isEn ? 'Master' : '마스터', price: isEn ? '18' : '5,000' },
+    { tier: isEn ? 'Grandmaster 5' : '그랜드마스터 5', price: isEn ? '20' : '10,000' },
+    { tier: isEn ? 'Grandmaster 4' : '그랜드마스터 4', price: isEn ? '24' : '13,000' },
+    { tier: isEn ? 'Grandmaster 3' : '그랜드마스터 3', price: isEn ? '30' : '15,000' },
+    { tier: isEn ? 'Grandmaster 2' : '그랜드마스터 2', price: isEn ? '39' : '22,000' },
+    { tier: isEn ? 'Grandmaster 1' : '그랜드마스터 1', price: isEn ? '49' : '27,000' },
   ];
 
   return (
