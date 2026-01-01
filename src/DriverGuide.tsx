@@ -67,8 +67,9 @@ const DriverGuide: React.FC<DriverGuideProps> = ({ lang }) => {
 
   const drivers = [
     { name: 'Attacca', tier: isEn ? 'Champion 4' : '챔피언 4', position: 'DPS' },
-    { name: 'DA', tier: isEn ? 'Champion 3' : '챔피언 3', position: 'SUP, DPS' },
-    { name: 'XZ', tier: isEn ? 'Champion 5' : '챔피언 5', position: 'DPS, TANK, SUP' },
+    { name: 'DA', tier: isEn ? 'Champion 3' : '챔피언 3', position: 'SUP' },
+    { name: 'SY', tier: isEn ? 'Champion 2' : '챔피언 2', position: 'DPS' },
+    { name: 'CH', tier: isEn ? 'Champion 3' : '챔피언 3', position: 'TANK' },
   ];
 
   return (
